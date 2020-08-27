@@ -1,8 +1,11 @@
-using System;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-
 using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using Newtonsoft.Json;
 
 
 namespace example_client
@@ -40,7 +43,20 @@ namespace example_client
                 Console.WriteLine(parsedInputParameters["testTargetURL"]);
                 Console.WriteLine(parsedInputParameters["expectedTitle"]);
 
-                browser.Goto(Convert.ToString(parsedInputParameters["testTargetURL"]));
+                string targetUrl = Convert.ToString(parsedInputParameters["testTargetURL"]);
+                string title = Convert.ToString(parsedInputParameters["expectedTitle"]);
+                
+                string previousResult = parsedInputParameters["previousResult"];
+                if (previousResult != "")
+                {
+                    Console.WriteLine(parsedInputParameters["previousResult"]);
+                    var converter = new ExpandoObjectConverter();
+                    dynamic previous = JsonConvert.DeserializeObject<ExpandoObject>(previousResult, converter);
+                    targetUrl = previous.targetUrl;
+                    title = previous.title;
+                }
+
+                browser.Goto(targetUrl);
 
                 driver = browser.Driver;
                 
@@ -53,11 +69,12 @@ namespace example_client
                 string jsonFilePath = $"{Environment.GetEnvironmentVariable("ARTIFACTS_PATH")}/any_page_test_{now}.json";
                 System.IO.File.WriteAllText(@"" + jsonFilePath, json.ToString());
 
-                string title = driver.Title;
+                string outputTitle = driver.Title;
+                string outputTargetURL = driver.Url;
 
-                Assert.AreEqual(title, Convert.ToString(parsedInputParameters["expectedTitle"]));
+                Assert.AreEqual(title, title);
                 
-                Environment.SetEnvironmentVariable("output", $"{{'title':'{title}'}}");
+                Environment.SetEnvironmentVariable("output", $"{{'targetURL':'{outputTargetURL}','title':'{outputTitle}'}}");
             }
         }
     }
