@@ -1,19 +1,17 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.Dynamic;
-using Newtonsoft.Json;
-
 
 namespace example_client
 {
     namespace Google
     {
         [TestFixture]
-        public class Test
+        public class Tests
         {
             readonly Browser browser = new Browser();
             private IWebDriver driver;
@@ -28,6 +26,27 @@ namespace example_client
             public void TearDown()
             {
                 browser.Close();
+            }
+
+            [Test]
+            public void GoogleTest()
+            {
+                browser.Goto("https://google.com");
+
+                driver = browser.Driver;
+                
+                Double now = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds / 1000L;
+                Screenshot image = ((ITakesScreenshot) driver).GetScreenshot();
+                image.SaveAsFile($"{Environment.GetEnvironmentVariable("SCREENSHOTS_PATH")}/screenshot_{now}.png");
+                
+                JObject json = new JObject(
+                    new JProperty("timestamp", now));
+                string jsonFilePath = $"{Environment.GetEnvironmentVariable("ARTIFACTS_PATH")}/google_test_{now}.json";
+                System.IO.File.WriteAllText(@"" + jsonFilePath, json.ToString());
+
+                string title = driver.Title;
+
+                Assert.AreEqual(title, "Google");
             }
 
             [Test]
@@ -46,14 +65,21 @@ namespace example_client
                 string targetUrl = Convert.ToString(parsedInputParameters["testTargetURL"]);
                 string title = Convert.ToString(parsedInputParameters["expectedTitle"]);
                 
-                string previousResult = parsedInputParameters["previousResult"];
-                if (previousResult != "")
+                string previousResult = Convert.ToString(parsedInputParameters["previousResult"]);
+                if (!string.IsNullOrWhiteSpace(previousResult))
                 {
                     Console.WriteLine(parsedInputParameters["previousResult"]);
                     var converter = new ExpandoObjectConverter();
-                    dynamic previous = JsonConvert.DeserializeObject<ExpandoObject>(previousResult, converter);
-                    targetUrl = previous.targetUrl;
-                    title = previous.title;
+                    try
+                    {
+                        dynamic previous = JsonConvert.DeserializeObject<ExpandoObject>(previousResult, converter);
+                        targetUrl = Convert.ToString(previous.targetUrl);
+                        title = Convert.ToString(previous.title);
+                    }
+                    catch (JsonReaderException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
 
                 browser.Goto(targetUrl);
