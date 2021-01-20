@@ -49,59 +49,59 @@ namespace example_client
                 Assert.AreEqual(title, "Google");
             }
 
-            // [Test]
-            // public void AnyPageTest()
-            // {
-            //     string inputParameters = Environment.GetEnvironmentVariable("inputParameters");
+            [Test]
+            public void AnyPageTest()
+            {
+                string inputParameters = Environment.GetEnvironmentVariable("inputParameters");
 
-            //     Console.WriteLine(inputParameters);
+                Console.WriteLine(inputParameters);
 
-            //     dynamic parsedInputParameters = JObject.Parse(inputParameters);
+                dynamic parsedInputParameters = JObject.Parse(inputParameters);
 
-            //     Console.WriteLine(parsedInputParameters);
-            //     Console.WriteLine(parsedInputParameters["testTargetURL"]);
-            //     Console.WriteLine(parsedInputParameters["expectedTitle"]);
+                Console.WriteLine(parsedInputParameters);
+                Console.WriteLine(parsedInputParameters["testTargetURL"]);
+                Console.WriteLine(parsedInputParameters["expectedTitle"]);
 
-            //     string targetUrl = Convert.ToString(parsedInputParameters["testTargetURL"]);
-            //     string title = Convert.ToString(parsedInputParameters["expectedTitle"]);
+                string targetUrl = Convert.ToString(parsedInputParameters["testTargetURL"]);
+                string title = Convert.ToString(parsedInputParameters["expectedTitle"]);
                 
-            //     string previousResult = Convert.ToString(parsedInputParameters["previousResult"]);
-            //     if (!string.IsNullOrWhiteSpace(previousResult))
-            //     {
-            //         Console.WriteLine(parsedInputParameters["previousResult"]);
-            //         var converter = new ExpandoObjectConverter();
-            //         try
-            //         {
-            //             dynamic previous = JsonConvert.DeserializeObject<ExpandoObject>(previousResult, converter);
-            //             targetUrl = Convert.ToString(previous.targetUrl);
-            //             title = Convert.ToString(previous.title);
-            //         }
-            //         catch (JsonReaderException e)
-            //         {
-            //             Console.WriteLine(e.Message);
-            //         }
-            //     }
+                string previousResult = Convert.ToString(parsedInputParameters["previousResult"]);
+                if (!string.IsNullOrWhiteSpace(previousResult))
+                {
+                    Console.WriteLine(parsedInputParameters["previousResult"]);
+                    var converter = new ExpandoObjectConverter();
+                    try
+                    {
+                        dynamic previous = JsonConvert.DeserializeObject<ExpandoObject>(previousResult, converter);
+                        targetUrl = Convert.ToString(previous.targetUrl);
+                        title = Convert.ToString(previous.title);
+                    }
+                    catch (JsonReaderException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
 
-            //     browser.Goto(targetUrl);
+                browser.Goto(targetUrl);
 
-            //     driver = browser.Driver;
+                driver = browser.Driver;
                 
-            //     Double now = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds / 1000L;
-            //     Screenshot image = ((ITakesScreenshot) driver).GetScreenshot();
-            //     image.SaveAsFile($"{Environment.GetEnvironmentVariable("SCREENSHOTS_PATH")}/screenshot_{now}.png");
+                Double now = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds / 1000L;
+                Screenshot image = ((ITakesScreenshot) driver).GetScreenshot();
+                image.SaveAsFile($"{Environment.GetEnvironmentVariable("SCREENSHOTS_PATH")}/screenshot_{now}.png");
                 
-            //     JObject json = new JObject(
-            //         new JProperty("timestamp", now));
-            //     string jsonFilePath = $"{Environment.GetEnvironmentVariable("ARTIFACTS_PATH")}/any_page_test_{now}.json";
-            //     System.IO.File.WriteAllText(@"" + jsonFilePath, json.ToString());
+                JObject json = new JObject(
+                    new JProperty("timestamp", now));
+                string jsonFilePath = $"{Environment.GetEnvironmentVariable("ARTIFACTS_PATH")}/any_page_test_{now}.json";
+                System.IO.File.WriteAllText(@"" + jsonFilePath, json.ToString());
 
-            //     string outputTitle = driver.Title;
-            //     string outputTargetURL = driver.Url;
+                string outputTitle = driver.Title;
+                string outputTargetURL = driver.Url;
 
-            //     Assert.AreEqual(title, title);
+                Assert.AreEqual(title, title);
                 
-            //     Environment.SetEnvironmentVariable("output", $"{{'targetURL':'{outputTargetURL}','title':'{outputTitle}'}}");
-            // }
+                Environment.SetEnvironmentVariable("output", $"{{'targetURL':'{outputTargetURL}','title':'{outputTitle}'}}");
+            }
         }
     }
 }
