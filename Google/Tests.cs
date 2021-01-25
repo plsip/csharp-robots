@@ -37,10 +37,10 @@ namespace example_client
                 Console.Write(inputParameters);
                 IDictionary envs = Environment.GetEnvironmentVariables();
 
-                foreach( KeyValuePair<string, string> kvp in envs )
+                foreach( DictionaryEntry de in envs)
                 {
                     Console.WriteLine("Key = {0}, Value = {1}",
-                        kvp.Key, kvp.Value);
+                        de.Key, de.Value);
                 }
             }
         }
