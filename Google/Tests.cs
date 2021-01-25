@@ -4,6 +4,8 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Dynamic;
 
 namespace example_client
@@ -33,7 +35,13 @@ namespace example_client
             {
                 string inputParameters = Environment.GetEnvironmentVariable("inputParameters");
                 Console.Write(inputParameters);
-                Console.Write(Environment.GetEnvironmentVariables());
+                IDictionary envs = Environment.GetEnvironmentVariables();
+
+                foreach( KeyValuePair<string, string> kvp in envs )
+                {
+                    Console.WriteLine("Key = {0}, Value = {1}",
+                        kvp.Key, kvp.Value);
+                }
             }
         }
     }
