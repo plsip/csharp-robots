@@ -33,15 +33,15 @@ namespace example_client
             [Test]
             public void AnyPageTest()
             {
-                string inputParameters = Environment.GetEnvironmentVariable("inputParameters");
-                Console.Write(inputParameters);
                 IDictionary envs = Environment.GetEnvironmentVariables();
-
-                foreach( DictionaryEntry de in envs)
+                foreach( DictionaryEntry de in envs )
                 {
                     Console.WriteLine("Key = {0}, Value = {1}",
                         de.Key, de.Value);
                 }
+
+                string inputParameters = Environment.GetEnvironmentVariable("inputParameters");
+                Console.Write(inputParameters);
             }
         }
     }
