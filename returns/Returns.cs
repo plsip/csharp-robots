@@ -1,10 +1,5 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using System;
-using System.Dynamic;
 
 namespace example_client
 {
