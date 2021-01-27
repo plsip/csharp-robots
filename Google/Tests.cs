@@ -13,7 +13,7 @@ namespace example_client
     namespace Google
     {
         [TestFixture]
-        public class Returns
+        public class Tests
         {
             readonly Browser browser = new Browser();
             private IWebDriver driver;
