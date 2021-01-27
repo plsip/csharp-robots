@@ -5,6 +5,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Dynamic;
 
 namespace example_client
@@ -36,7 +37,8 @@ namespace example_client
                 
                 foreach( DictionaryEntry de in envs )
                 {
-                    Console.WriteLine("Key = {0}, Value = {1}", de.Key, de.Value);
+                    Console.WriteLine("Key = {0}, Value = {1}",
+                        de.Key, de.Value);
                 }
 
                 string inputParameters = Environment.GetEnvironmentVariable("inputParameters");

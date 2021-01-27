@@ -34,6 +34,7 @@ namespace example_client
             public void AnyPageTest()
             {
                 IDictionary envs = Environment.GetEnvironmentVariables();
+                
                 foreach( DictionaryEntry de in envs )
                 {
                     Console.WriteLine("Key = {0}, Value = {1}",
