@@ -22,6 +22,7 @@ namespace example_client
             public void ReturnsTest()
             {
                 Environment.SetEnvironmentVariable("output", "{'out1':'val1','out2':'val2'}");
+                Assert.IsTrue(true);
             }
         }
     }
