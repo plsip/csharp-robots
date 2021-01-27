@@ -33,6 +33,8 @@ namespace example_client
             [Test]
             public void AnyPageTest()
             {
+                Console.Write("start");
+                
                 IDictionary envs = Environment.GetEnvironmentVariables();
                 
                 foreach( DictionaryEntry de in envs )
