@@ -46,7 +46,7 @@ namespace example_client
                 string inputParameters = Environment.GetEnvironmentVariable("inputParameters");
                 Console.Write(inputParameters);
                 
-                Environment.SetEnvironmentVariable("output", "{'out1':'val1','out2':'val2'}");
+                Environment.SetEnvironmentVariable("output", "{\"out1\":\"val1\",\"out2\":\"val2\"}");
             }
         }
     }
