@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/lukasikp/RiderProjects/csharp-robots/src/SeleniumBots/SeleniumBots.csproj": {}
+  },
+  "projects": {
+    "/Users/lukasikp/RiderProjects/csharp-robots/src/SeleniumBots/SeleniumBots.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/lukasikp/RiderProjects/csharp-robots/src/SeleniumBots/SeleniumBots.csproj",
+        "projectName": "SeleniumBots",
+        "projectPath": "/Users/lukasikp/RiderProjects/csharp-robots/src/SeleniumBots/SeleniumBots.csproj",
+        "packagesPath": "/Users/lukasikp/.nuget/packages/",
+        "outputPath": "/Users/lukasikp/RiderProjects/csharp-robots/src/SeleniumBots/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/lukasikp/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.8.3, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[3.141.0, )"
+            },
+            "nunit": {
+              "target": "Package",
+              "version": "[3.13.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/Users/lukasikp/.dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

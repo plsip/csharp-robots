@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "RealtorScraper": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "City": "Pahrump",
+        "State_Abbreviation": "NV"
+      }
+    }
+  }
+}
