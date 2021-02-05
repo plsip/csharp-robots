@@ -8,18 +8,15 @@ namespace SeleniumBots.Bots
     [TestFixture]
     public class ScrapeRealtorsBot
     {
-        private Browser browser;
 
         [SetUp]
         public void SetUp()
         {
-            browser = new Browser();
         }
 
         [TearDown]
         public void TearDown()
         {
-            browser.Close();
         }
 
         [Test]
@@ -32,14 +29,14 @@ namespace SeleniumBots.Bots
         [Test]
         public void GetRealtors1()
         {
-            Console.WriteLine("Getting realtors");
+            Console.WriteLine("Getting realtors +1");
             Assert.True(true);
         }
 
         [Test]
         public void GetRealtors2()
         {
-            Console.WriteLine("Getting realtors +1");
+            Console.WriteLine("Getting realtors +2");
             Assert.True(true);
         }
     }
