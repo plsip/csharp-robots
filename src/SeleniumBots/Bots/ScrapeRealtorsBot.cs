@@ -39,7 +39,7 @@ namespace SeleniumBots.Bots
         [Test]
         public void GetRealtors2()
         {
-            Console.WriteLine("Getting realtors");
+            Console.WriteLine("Getting realtors +1");
             Assert.True(true);
         }
     }
