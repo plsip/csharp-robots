@@ -40,7 +40,6 @@ namespace SeleniumBots.Bots
         public void GetRealtors2()
         {
             Console.WriteLine("Getting realtors");
-            Assert.True(true);
         }
     }
 }
